@@ -24,6 +24,7 @@ def main():
             continue
 
 
+        # User options
         if cmd == 0:
             break
 
@@ -37,6 +38,12 @@ def main():
             clearSudoku(sudoku)
 
 
+
+# Algorithm to solve the Sudoku
+def solveSudoku(sudoku):
+
+
+# Print the Sudoku to the command line
 def printSudoku(sudoku):
     print " _ _ _ _ _ _ _ _ _ _ _ _ "
 
@@ -75,6 +82,8 @@ def printSudoku(sudoku):
     print "-------------------------\n"
 
 
+
+# Change to the mode where you can enter values into the Sudoku
 def enterValueMode(sudoku):
     while True:
         printEnterOptions()
@@ -103,6 +112,8 @@ def enterValueMode(sudoku):
             clearValue(sudoku)
 
 
+
+# Give option to insert a value into the Sudoku
 def enterValue(sudoku):
     val = raw_input("\nEnter a coordinate and a value of the form \"[row][col] = number\":\n\n")
 
@@ -129,6 +140,8 @@ def enterValue(sudoku):
     printSudoku(sudoku)
 
 
+
+# Give option to clear a value in the Sudoku
 def clearValue(sudoku):
     val = raw_input("\nEnter a coordinate to clear, of the form \"[row][col]\":\n\n")
 
@@ -153,12 +166,16 @@ def clearValue(sudoku):
     printSudoku(sudoku)
 
 
+
+# Clears all cells in the Sudoku
 def clearSudoku(sudoku):
     for y in range(9):
         for x in range(9):
             sudoku[x][y] = 0
 
     printSudoku(sudoku)
+
+
 
 # Commands that will be printed in the main loop
 def printMainOptions():
@@ -172,6 +189,7 @@ def printMainOptions():
     print "4: Clear Sudoku"
 
 
+
 # Commands that will be printed in the value entering loop
 def printEnterOptions():
     print "\n|------------------------|"
@@ -180,6 +198,7 @@ def printEnterOptions():
     print "0: Go back"
     print "1: Enter a value"
     print "2: Clear a value"
+
 
 
 if __name__ == '__main__':
