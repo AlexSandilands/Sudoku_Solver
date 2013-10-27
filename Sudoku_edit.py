@@ -17,7 +17,7 @@ def enterValueMode(sudoku):
 
         # Only allow integer values to be entered
         except ValueError:
-            print "\nPlease enter a number from 0 to 6.\n"
+            print "\nPlease enter an integer from 0 to 6.\n"
             continue
 
         if cmd == 0:
@@ -66,7 +66,7 @@ def enterValue(sudoku):
         print "\nIncorrect format. Here is an example: "
         print "    [1][9] = 5 will put a 5 in the very bottom left corner"
 
-    sudoku[row][col][0] = num
+    sudoku[row][col] = num
     main.printSudoku(sudoku)
 
 
@@ -94,7 +94,7 @@ def clearValue(sudoku):
 
         return
 
-    sudoku[row][col][0] = 0
+    sudoku[row][col] = 0
     main.printSudoku(sudoku)
 
 
@@ -123,7 +123,7 @@ def enterRow(sudoku):
     row = []
 
     for col in range(9):
-        row.append([nums[col], []])
+        row.append(nums[col])
 
     sudoku[rowInd] = row
 
@@ -155,7 +155,7 @@ def enterColumn(sudoku):
     col = []
 
     for row in range(9):
-        col.append([nums[row], []])
+        col.append(nums[row])
 
 
     for row in range(9):
@@ -181,13 +181,13 @@ def clearRow(sudoku):
 
 
     for col in range(9):
-        sudoku[row][col][0] = 0
+        sudoku[row][col] = 0
 
     main.printSudoku(sudoku)
 
 
 
-# Give option to clear a row
+# Give option to clear a column
 def clearColumn(sudoku):
     val = raw_input("\nEnter the column to clear: ")
 
@@ -204,7 +204,7 @@ def clearColumn(sudoku):
 
 
     for row in range(9):
-        sudoku[row][col][0] = 0
+        sudoku[row][col] = 0
 
     main.printSudoku(sudoku)
 
@@ -214,7 +214,7 @@ def clearColumn(sudoku):
 def clearSudoku(sudoku):
     for y in range(9):
         for x in range(9):
-            sudoku[x][y][0] = 0
+            sudoku[x][y] = 0
 
     main.printSudoku(sudoku)
 

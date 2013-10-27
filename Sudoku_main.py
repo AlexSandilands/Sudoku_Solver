@@ -4,7 +4,7 @@ import Sudoku_edit as editor
 def main():
 
     # Initialise Sudoku
-    sudoku = [[[0, [col+1]] for col in range(9)] for row in range(9)]
+    sudoku = [[0 for col in range(9)] for row in range(9)]
 
     print "\nWelcome to the Sudoku solver.\n\n"
 
@@ -17,7 +17,7 @@ def main():
             cmd = int(raw_input("\n"))
 
             # Make sure the value entered is in the bounds
-            if cmd < 0 or cmd > 5:
+            if cmd < 0 or cmd > 6:
                 print "\nPlease enter a number from 0 to 5.\n"
                 continue
 
@@ -35,7 +35,7 @@ def main():
             printSudoku(sudoku)
 
         elif cmd == 2:
-            solver.solveSudoku(sudoku)
+            printSudoku(solver.solveSudoku(sudoku))
 
         elif cmd == 3:
             editor.enterValueMode(sudoku)
@@ -48,19 +48,17 @@ def main():
 
 
 
-# Loads an easy Sudoku into the program
+# Loads an easy hard coded Sudoku into the program
 def loadEasy(sudoku):
-    d = [i+1 for i in range(9)]
-
-    r1 = [[2, d], [8, d], [6, d], [0, d], [0, d], [1, d], [0, d], [9, d], [0, d]]
-    r2 = [[3, d], [0, d], [0, d], [2, d], [0, d], [7, d], [0, d], [0, d], [0, d]]
-    r3 = [[0, d], [0, d], [5, d], [9, d], [0, d], [0, d], [6, d], [0, d], [0, d]]
-    r4 = [[0, d], [0, d], [7, d], [0, d], [1, d], [4, d], [2, d], [3, d], [0, d]]
-    r5 = [[0, d], [3, d], [0, d], [0, d], [0, d], [0, d], [0, d], [1, d], [0, d]]
-    r6 = [[0, d], [2, d], [8, d], [6, d], [9, d], [0, d], [5, d], [0, d], [0, d]]
-    r7 = [[0, d], [0, d], [1, d], [0, d], [0, d], [5, d], [3, d], [0, d], [0, d]]
-    r8 = [[0, d], [0, d], [0, d], [1, d], [0, d], [9, d], [0, d], [0, d], [2, d]]
-    r9 = [[0, d], [4, d], [0, d], [3, d], [0, d], [0, d], [1, d], [8, d], [9, d]]
+    r1 = [2, 8, 6, 0, 0, 1, 0, 9, 0]
+    r2 = [3, 0, 0, 2, 0, 7, 0, 0, 0]
+    r3 = [0, 0, 5, 9, 0, 0, 6, 0, 0]
+    r4 = [0, 0, 7, 0, 1, 4, 2, 3, 0]
+    r5 = [0, 3, 0, 0, 0, 0, 0, 1, 0]
+    r6 = [0, 2, 8, 6, 9, 0, 5, 0, 0]
+    r7 = [0, 0, 1, 0, 0, 5, 3, 0, 0]
+    r8 = [0, 0, 0, 1, 0, 9, 0, 0, 2]
+    r9 = [0, 4, 0, 3, 0, 0, 1, 8, 9]
 
     sudoku[0] = r1
     sudoku[1] = r2
@@ -84,24 +82,24 @@ def printSudoku(sudoku):
         s = "| "
 
         for col in range(3):
-            if sudoku[row][col][0] != 0:
-                s += str(sudoku[row][col][0]) + " "
+            if sudoku[row][col] != 0:
+                s += str(sudoku[row][col]) + " "
             else:
                 s += ". "
 
         s += "| "
 
         for col in range(3, 6):
-            if sudoku[row][col][0] != 0:
-                s += str(sudoku[row][col][0]) + " "
+            if sudoku[row][col] != 0:
+                s += str(sudoku[row][col]) + " "
             else:
                 s += ". "
 
         s += "| "
 
         for col in range(6, 9):
-            if sudoku[row][col][0] != 0:
-                s += str(sudoku[row][col][0]) + " "
+            if sudoku[row][col] != 0:
+                s += str(sudoku[row][col]) + " "
             else:
                 s += ". "
 
@@ -116,7 +114,7 @@ def printSudoku(sudoku):
 
 
 
-# Commands that will be printed in the main loop
+# Commands which will be printed in the main loop
 def printMainOptions():
     print "\n|---------------|"
     print "|   Main Menu   |"
