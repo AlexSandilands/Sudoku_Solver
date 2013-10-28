@@ -7,6 +7,7 @@
 
 
 # Algorithm to solve the Sudoku
+# Sudoku is a 2d list of size 9x9.
 def solveSudoku(sudoku):
     # Iterate through every cell
     for row in range(9):

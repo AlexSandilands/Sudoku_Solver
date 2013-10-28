@@ -8,7 +8,6 @@
 
 import Sudoku_main as main
 
-
 # Change to the mode where you can enter values into the Sudoku
 def enterValueMode(sudoku):
     while True:
@@ -19,13 +18,13 @@ def enterValueMode(sudoku):
             cmd = int(raw_input("\n"))
 
             # Make sure the value entered is in the bounds
-            if cmd < 0 or cmd > 6:
-                print "\nPlease enter a number from 0 to 6.\n"
+            if cmd < 0 or cmd > 3:
+                print "\nPlease enter a number from 0 to 3.\n"
                 continue
 
         # Only allow integer values to be entered
         except ValueError:
-            print "\nPlease enter an integer from 0 to 6.\n"
+            print "\nPlease enter an integer from 0 to 3.\n"
             continue
 
         if cmd == 0:
@@ -68,7 +67,6 @@ def enterValue(sudoku):
 
     sudoku[row][col] = num
     main.printSudoku(sudoku)
-
 
 
 

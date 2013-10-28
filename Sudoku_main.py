@@ -25,7 +25,7 @@ def main():
             cmd = int(raw_input("\n"))
 
             # Make sure the value entered is in the bounds
-            if cmd < 0 or cmd > 6:
+            if cmd < 0 or cmd > 5:
                 print "\nPlease enter a number from 0 to 5.\n"
                 continue
 
@@ -54,8 +54,6 @@ def main():
         elif cmd == 5:
             loadEasy(sudoku)
 
-        elif cmd == 6:
-            print solver.isValid(sudoku, 2, 7, 2)
 
 
 # Loads an easy hard coded Sudoku into the program
