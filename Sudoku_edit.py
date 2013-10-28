@@ -1,3 +1,11 @@
+# ------------------------------------------------------------ #
+# ------------------------------------------------------------ #
+# -------- Functions for editing values in the Sudoku -------- #
+# ------------------------------------------------------------ #
+# ------------------------------------------------------------ #
+
+
+
 import Sudoku_main as main
 
 
@@ -27,24 +35,16 @@ def enterValueMode(sudoku):
             enterValue(sudoku)
 
         elif cmd == 2:
-            clearValue(sudoku)
-
-        elif cmd == 3:
             enterRow(sudoku)
 
-        elif cmd == 4:
+        elif cmd == 3:
             enterColumn(sudoku)
-
-        elif cmd == 5:
-            clearRow(sudoku)
-
-        elif cmd == 6:
-            clearColumn(sudoku)
 
 
 
 # Give option to insert a value into the Sudoku
 def enterValue(sudoku):
+    print "0 will clear the cell, 1-9 will insert a number"
     val = raw_input("\nEnter a coordinate and a value of the form \"[row][col] = number\":\n\n")
 
     if len(val) != 10:
@@ -69,33 +69,6 @@ def enterValue(sudoku):
     sudoku[row][col] = num
     main.printSudoku(sudoku)
 
-
-
-# Give option to clear a value in the Sudoku
-def clearValue(sudoku):
-    val = raw_input("\nEnter a coordinate to clear, of the form \"[row][col]\":\n\n")
-
-    if len(val) != 6:
-        print "\nIncorrect format. Here is an example: "
-        print "    [1][9] will clear the very bottom left corner"
-
-        return
-
-    try:
-        row = int(val[1:2])
-        row -= 1
-
-        col = int(val[4:5])
-        col -= 1
-
-    except ValueError:
-        print "\nIncorrect format. Here is an example: "
-        print "    [1][9] will clear the very bottom left corner"
-
-        return
-
-    sudoku[row][col] = 0
-    main.printSudoku(sudoku)
 
 
 
@@ -164,50 +137,6 @@ def enterColumn(sudoku):
     main.printSudoku(sudoku)
 
 
-# Give option to clear a row
-def clearRow(sudoku):
-    val = raw_input("\nEnter the row to clear: ")
-
-    if len(val) != 1:
-        print "\nIncorrect format. Just enter a number"
-        return
-
-    try:
-        row = int(val) - 1
-
-    except:
-        print "\nIncorrect format. Just enter a number"
-        return
-
-
-    for col in range(9):
-        sudoku[row][col] = 0
-
-    main.printSudoku(sudoku)
-
-
-
-# Give option to clear a column
-def clearColumn(sudoku):
-    val = raw_input("\nEnter the column to clear: ")
-
-    if len(val) != 1:
-        print "\nIncorrect format. Just enter a number"
-        return
-
-    try:
-        col = int(val) - 1
-
-    except:
-        print "\nIncorrect format. Just enter a number"
-        return
-
-
-    for row in range(9):
-        sudoku[row][col] = 0
-
-    main.printSudoku(sudoku)
-
 
 
 # Clears all cells in the Sudoku
@@ -227,8 +156,5 @@ def printEnterOptions():
     print "|------------------------|\n"
     print "0: Go back"
     print "1: Enter a value"
-    print "2: Clear a value"
-    print "3: Enter a row"
-    print "4: Enter a column"
-    print "5: Clear a row"
-    print "6: Clear a column"
+    print "2: Enter a row"
+    print "3: Enter a column"

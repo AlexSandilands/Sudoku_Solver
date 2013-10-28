@@ -1,3 +1,11 @@
+# ------------------------------------------------------------ #
+# ------------------------------------------------------------ #
+# ------------- Functions for solving the Sudoku ------------- #
+# ------------------------------------------------------------ #
+# ------------------------------------------------------------ #
+
+
+
 # Algorithm to solve the Sudoku
 def solveSudoku(sudoku):
     # Iterate through every cell
@@ -39,35 +47,22 @@ def solveSudoku(sudoku):
 
 
 
-
 # Checks if the val can be placed in the cell: [row, col]
 # without breaking any constraints
 def isValid(sudoku, row, col, val):
     # Get the box that the row is in
-    if row < 3:
-        rMin = 0
-        rMax = 3
-
-    elif row < 6:
-        rMin = 3
-        rMax = 6
-
-    else:
-        rMin = 6
-        rMax = 9
+    for r in range(1, 4):
+        if row < r*3:
+            rMin = r*3 - 3
+            rMax = r*3
+            break
 
     # Get the box that the col is in
-    if col < 3:
-        cMin = 0
-        cMax = 3
-
-    elif col < 6:
-        cMin = 3
-        cMax = 6
-
-    else:
-        cMin = 6
-        cMax = 9
+    for c in range(1, 4):
+        if col < c*3:
+            cMin = c*3 - 3
+            cMax = c*3
+            break
 
     # Check if the val is in the box that row, col is in
     for r in range(rMin, rMax):
@@ -76,7 +71,7 @@ def isValid(sudoku, row, col, val):
                 return False
 
     # Check if the val is in the column: col
-    if val in getColumn(sudoku, col):
+    if val in [ sudoku[r][col] for r in range(9)]:
         return False
 
     # Check if the val is in the row: row
@@ -94,8 +89,3 @@ def isFull(sudoku):
             return False
 
     return True
-
-
-# Get the column with the input index
-def getColumn(sudoku, col):
-    return [ sudoku[row][col] for row in range(9)]

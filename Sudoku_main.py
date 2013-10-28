@@ -1,3 +1,11 @@
+# ------------------------------------------------------------ #
+# ------------------------------------------------------------ #
+# ----------------------- Main Program ----------------------- #
+# ------------------------------------------------------------ #
+# ------------------------------------------------------------ #
+
+
+
 import Sudoku_solver as solver
 import Sudoku_edit as editor
 
@@ -46,6 +54,8 @@ def main():
         elif cmd == 5:
             loadEasy(sudoku)
 
+        elif cmd == 6:
+            print solver.isValid(sudoku, 2, 7, 2)
 
 
 # Loads an easy hard coded Sudoku into the program
